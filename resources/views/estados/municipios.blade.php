@@ -43,11 +43,7 @@
         pageLength: 10,
         order: [[0, 'asc']],
         language: {
-            search: "Buscar:",
-            lengthMenu: "Mostrar _MENU_",
-            info: "Mostrando _START_ a _END_ de _TOTAL_",
-            paginate: { previous: "Anterior", next: "Siguiente" },
-            zeroRecords: "Sin resultados",
+            search: "Buscar:", lengthMenu: "Mostrar _MENU_", info: "Mostrando _START_ a _END_ de _TOTAL_", paginate: { previous: "Anterior", next: "Siguiente" }, zeroRecords: "Sin resultados",
         }
     });
 </script>

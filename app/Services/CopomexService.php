@@ -17,9 +17,7 @@ class CopomexService
 
     public function getEstados(): array
     {
-        $resp = Http::timeout(20)->get("{$this->baseUrl}/get_estado_clave", [
-            'token' => $this->token,
-        ]);
+        $resp = Http::timeout(20)->get("{$this->baseUrl}/get_estado_clave", ['token' => $this->token]);
 
         if (!$resp->ok()) {
             throw new \RuntimeException("COPOMEX HTTP {$resp->status()}");
@@ -31,8 +29,7 @@ class CopomexService
     public function getMunicipiosPorEstado(string $estado): array
     {
         $resp = Http::timeout(20)->get(
-            "{$this->baseUrl}/get_municipio_clave_por_estado/" . urlencode($estado),
-            ['token' => $this->token]
+            "{$this->baseUrl}/get_municipio_clave_por_estado/" . urlencode($estado), ['token' => $this->token]
         );
 
         if (!$resp->ok()) {

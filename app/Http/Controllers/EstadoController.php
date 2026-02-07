@@ -40,10 +40,7 @@ class EstadoController extends Controller
             $rows = [];
             foreach ($map as $nombre => $clave) {
                 $rows[] = [
-                    'nombre' => (string) $nombre,
-                    'clave' => (string) $clave,
-                    'created_at' => now(),
-                    'updated_at' => now(),
+                    'nombre' => (string) $nombre, 'clave' => (string) $clave,'created_at' => now(),'updated_at' => now(),
                 ];
             }
 
@@ -69,8 +66,7 @@ class EstadoController extends Controller
 
         foreach ($map as $nombre => $clave) {
             $municipios[] = [
-                'nombre' => $nombre,
-                'clave' => (string) $clave,
+                'nombre' => $nombre,'clave' => (string) $clave,
             ];
         }
         return view('estados.municipios', compact('estado', 'municipios'));
