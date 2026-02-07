@@ -17,7 +17,7 @@
 
 <div class="card shadow-soft">
     <div class="card-body">
-        <table id="tabla-municipios" class="table table-hover table-bordered mb-0">
+        <table id="tabla-municipios" class="table table-hover table-striped table-bordered mb-0">
             <thead class="bg-white">
                 <tr>
                     <th>Municipio</th>

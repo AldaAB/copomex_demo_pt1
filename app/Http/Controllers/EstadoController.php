@@ -6,13 +6,16 @@ use App\Models\Estado;
 use App\Services\CopomexService;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
+use Carbon\Carbon;
 
 class EstadoController extends Controller
 {
     public function index()
     {
         $estados = Estado::orderBy('nombre')->get();
-        return view('estados.index', compact('estados'));
+        $ultimaSyncRaw = Estado::max('updated_at');
+        $ultimaSync = $ultimaSyncRaw ? Carbon::parse($ultimaSyncRaw) : null;
+        return view('estados.index', compact('estados', 'ultimaSync'));
     }
 
     public function sync(CopomexService $copomex)
@@ -32,7 +35,6 @@ class EstadoController extends Controller
         }
 
         try {
-            // NO uses transacciones aquí. TRUNCATE en MySQL puede romperlas dependiendo de engine/config.
             Estado::truncate();
 
             $rows = [];

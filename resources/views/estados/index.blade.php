@@ -10,18 +10,26 @@
         </div>
     </div>
 
-    <form id="sync-form" method="POST" action="{{ route('estados.sync') }}">
+    <form id="sync-form" method="POST" action="{{ route('estados.sync') }}" class="text-right">
         @csrf
-        <button id="sync-btn" class="btn btn-primary">
+        <button id="sync-btn" class="btn btn-success">
             <i class="bi bi-arrow-repeat mr-1"></i>
-            Sincronizar
+            Sincronizar con COPOMEX
         </button>
+        @if($ultimaSync)
+            <div class="text-muted small mb-2">
+                <i class="bi bi-clock-history mr-1"></i>
+                Última sincronización:
+                <strong>{{ $ultimaSync->diffForHumans() }}</strong>
+                <span class="text-muted">({{ $ultimaSync->format('d/m/Y H:i') }})</span>
+            </div>
+        @endif
     </form>
 </div>
 
 <div class="card shadow-soft">
     <div class="card-body">
-        <table id="tabla-estados" class="table table-hover table-bordered mb-0">
+        <table id="tabla-estados" class="table table-hover table-striped table-bordered mb-0">
             <thead class="bg-white">
                 <tr>
                     <th>Nombre</th>
@@ -68,7 +76,6 @@
     btn.html('<span class="spinner-border spinner-border-sm mr-2"></span>Sincronizando...');
   });
 
-  // Auto-hide alerts
   $(function () {
     const $alerts = $('.alert');
     if ($alerts.length) {
